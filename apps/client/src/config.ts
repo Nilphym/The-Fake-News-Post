@@ -1,1 +1,1 @@
-export const API_URL = 'lovalhost:4000';
+export const API_URL = 'https://the-fake-news-post.herokuapp.com/';

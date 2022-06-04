@@ -10,7 +10,7 @@ export const apiService = {
     return fetchedData;
   },
 
-  async post({ url, data }: { url: string; data: Object }) {
+  async post({ url, data }: { url: string; data?: Object }) {
     const { data: fetchedData } = await axiosInstance.post(url, data);
     return fetchedData;
   },

@@ -1,3 +1,5 @@
+import { apiService } from './apiService';
+
 export type PossibleAnswer = 'fake' | 'real';
 export type NewsType = Array<{
   id: string;
@@ -13,24 +15,15 @@ export type AnswersType = {
 
 export const gameService = {
   getNews: async (): Promise<NewsType> => {
-    return [
-      {
-        id: '1',
-        title: 'President John F Kennedy assassinated in the United States',
-        content:
-          "Jack Ruby murders John F. Kennedy's suspected assassin Lee Harvey Oswald during the transportation of Oswald from Dallas Police Headquaters to the Dallas Country Jail on November 24th live on television.",
-        image:
-          'http://1.bp.blogspot.com/-bCKdfX_Ws8E/Tfrh2D9wNjI/AAAAAAACMrk/CCeSMyR3XSo/s1600/old_america_01.jpg',
-      },
-      {
-        id: '2',
-        title: 'President John F Kennedy assassinated in the United States',
-        content:
-          "Jack Ruby murders John F. Kennedy's suspected assassin Lee Harvey Oswald during the transportation of Oswald from Dallas Police Headquaters to the Dallas Country Jail on November 24th live on television.",
-        image:
-          'http://1.bp.blogspot.com/-bCKdfX_Ws8E/Tfrh2D9wNjI/AAAAAAACMrk/CCeSMyR3XSo/s1600/old_america_01.jpg',
-      },
-    ];
+    const news = await apiService.post({ url: '/game' });
+    return news.map(
+      (singleNews: { id: string; title: string; content: string }) => ({
+        ...singleNews,
+        title: singleNews.title.replaceAll('\\"', '"'),
+        content: singleNews.content.replaceAll('\\"', '"'),
+        image: 'http://loremflickr.com/1234/2345/people?56789',
+      }),
+    );
   },
   calculateElapsedTime: ({ startTime }: { startTime: number }) => {
     const endTime = new Date();
