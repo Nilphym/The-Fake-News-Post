@@ -44,7 +44,7 @@ export const StartPage = () => {
               </Form.Control.Feedback>
             </Form.Group>
             <button type='submit' className={styles['StartPage-button']}>
-              Submit
+              Join
             </button>
           </Form>
         </Col>
