@@ -1,0 +1,20 @@
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.borders {
+    width: 50px;
+    height: 3px;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+}
+.subHeader {
+    border-bottom: 1px solid #333;
+}
