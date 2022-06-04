@@ -1,9 +1,6 @@
 import { Carousel } from 'react-bootstrap';
-// @ts-ignore
 import jedrzejRatajczak from '../../assets/images/authors/jedrzejRatajczak.jpg';
-// @ts-ignore
 import justynaGladysz from '../../assets/images/authors/justynaGladysz.jpg';
-// @ts-ignore
 import personPlaceholder from '../../assets/images/authors/personPlaceholder.jpg';
 
 import styles from './Authors.module.scss';
@@ -14,9 +11,9 @@ export const Authors = (): JSX.Element => {
             <h2>AUTHORS</h2>
             <Carousel fade>
                 <Carousel.Item interval={1000}>
-                    <div className={styles['Authors-img']}>
+                    <div className={styles['Authors-img-container']}>
                         <img
-                            className='d-block w-50 image'
+                            className={'d-block image ' + styles['Authors-img']}
                             src={jedrzejRatajczak}
                             alt='Jędrzej Ratajczak'
                         />
@@ -28,9 +25,9 @@ export const Authors = (): JSX.Element => {
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item interval={1000}>
-                    <div className={styles['Authors-img']}>
+                    <div className={styles['Authors-img-container']}>
                         <img
-                            className='d-block w-50 image'
+                            className={'d-block image ' + styles['Authors-img']}
                             src={justynaGladysz}
                             alt='Justyna Gładysz'
                         />
@@ -42,9 +39,9 @@ export const Authors = (): JSX.Element => {
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item interval={1000}>
-                    <div className={styles['Authors-img']}>
+                    <div className={styles['Authors-img-container']}>
                         <img
-                            className='d-block w-50 image'
+                            className={'d-block image ' + styles['Authors-img']}
                             src={personPlaceholder}
                             alt='Maciej Opaliński'
                         />
@@ -56,9 +53,9 @@ export const Authors = (): JSX.Element => {
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item interval={1000}>
-                    <div className={styles['Authors-img']}>
+                    <div className={styles['Authors-img-container']}>
                         <img
-                            className='d-block w-50 image'
+                            className={'d-block image ' + styles['Authors-img']}
                             src={personPlaceholder}
                             alt='Dawid Żłobecki'
                         />
@@ -70,9 +67,9 @@ export const Authors = (): JSX.Element => {
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item interval={1000}>
-                    <div className={styles['Authors-img']}>
+                    <div className={styles['Authors-img-container']}>
                         <img
-                            className='d-block w-50 image'
+                            className={'d-block image ' + styles['Authors-img']}
                             src={personPlaceholder}
                             alt='Konrad Trawczyński'
                         />
