@@ -1,3 +1,4 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 export enum NewsType {
@@ -7,22 +8,21 @@ export enum NewsType {
 
 @Entity('news')
 export class NewsEntry {
+    @ApiProperty()
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
+    @ApiProperty()
     @Column('text')
     title: string;
 
+    @ApiProperty()
     @Column('text')
-    body: string;
+    content: string;
 
     @Column('enum', { enum: NewsType })
     real_answer: NewsType;
 
     @Column('enum', { enum: NewsType })
     ai_answer: NewsType;
-
-    your_answer?: NewsType | null;
-
-    your_score?: number;
 }
