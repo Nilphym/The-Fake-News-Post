@@ -1,0 +1,28 @@
+.StartPage-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.StartPage-form {
+  margin-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2rem;
+
+  .StartPage-formInput {
+    background-color: transparent;
+    border-radius: 0;
+    border-width: 2px;
+    border-color: black;
+  }
+}
+
+.StartPage-button {
+  margin-top: 1rem;
+  font-size: calc(1.3rem + 0.6vw);
+  padding: 0.5rem;
+  background-color: transparent;
+}
