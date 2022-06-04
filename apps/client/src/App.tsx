@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { Layout } from './Layout';
 import { NewsPage } from './pages/GamePage';
+import { RankPage } from './pages/RankPage';
 
 export const App = () => {
   return (
@@ -9,7 +10,7 @@ export const App = () => {
         <Route index element={<div>Home Page</div>} />
         <Route path='game' element={<NewsPage />} />
         <Route path='summary' element={<div>Podsumowanie rozgrywki</div>} />
-        <Route path='ranking' element={<div>Ranking</div>} />
+        <Route path='ranking' element={<RankPage/>} />
       </Route>
     </Routes>
   );
