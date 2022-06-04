@@ -8,7 +8,7 @@ import styles from './Authors.module.scss';
 export const Authors = (): JSX.Element => {
   return (
     <>
-      <h2>AUTHORS</h2>
+      <h2 className={styles.header}>AUTHORS</h2>
       <Carousel fade>
         <Carousel.Item interval={1000}>
           <div className={styles['Authors-img-container']}>
