@@ -1,0 +1,22 @@
+.singleRow {
+  display: flex;
+  justify-content: space-between;
+}
+.crosswordComponent {
+  display: flex;
+}
+.crosswordContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.crosswordIndex {
+  padding-right: 8px;
+}
+.scoreContainer {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
