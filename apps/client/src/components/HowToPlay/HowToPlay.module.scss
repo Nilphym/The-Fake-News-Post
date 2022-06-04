@@ -1,0 +1,16 @@
+.mainContainer {
+  margin-top: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.header {
+  font-size: 20px;
+  margin-top: 25px;
+}
+.instructionDescription {
+  font-size: 16;
+  text-align: justify;
+}
