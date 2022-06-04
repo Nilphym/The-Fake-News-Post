@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import React from 'react';
 import { NewsContent } from './NewsContent';
 import { NewsHeader } from './NewsHeader';
@@ -52,7 +53,7 @@ export const MainNews = ({
         </button>
       </div>
       <NewsHeader>{title!}</NewsHeader>
-      <NewsContent>{content!}</NewsContent>
+      <NewsContent>{content!.slice(0, 1000)} [...]</NewsContent>
       <NewsImage image={image!} />
     </div>
   );

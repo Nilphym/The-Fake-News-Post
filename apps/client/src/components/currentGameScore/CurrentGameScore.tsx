@@ -3,15 +3,12 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { GameState } from '../../redux/gameSlice';
 import { gameService } from '../../services/gameService';
-import scorePlaceholder from '../../assets/images/scorePlaceholder.jpg';
+import scorePlaceholder from '../../assets/images/scorePlaceholder.png';
 
 import styles from './CurrentGameScore.module.scss';
 
 export const CurrentGameScore = (): JSX.Element => {
   const game: GameState = useSelector((state: any) => state.game);
-  const totalTime = game.answers
-    .map((value) => value.elapsedTime)
-    .reduce((previousValue, currentValue) => previousValue + currentValue, 0);
 
   const timePerQuestion = 60 * 5;
 
@@ -32,22 +29,29 @@ export const CurrentGameScore = (): JSX.Element => {
   return (
     <div className={'mt-5'}>
       {game.news.length > 0 ? (
-        <div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           <h3 className={'text-center'}>CURRENT GAME</h3>
           <div>
-            <p>Total time: {totalTime + counter}s</p>
+            <div>Time left: {timePerQuestion - counter}s</div>
+            <ProgressBar
+              now={((timePerQuestion - counter) / timePerQuestion) * 100}
+            ></ProgressBar>
           </div>
-          <div>Time left: {timePerQuestion - counter}s</div>
-          <ProgressBar
-            now={((timePerQuestion - counter) / timePerQuestion) * 100}
-          ></ProgressBar>
-          <div>Progress</div>
-          <ProgressBar
-            now={((game.currentQuestion + 1) / game.news.length) * 100}
-          ></ProgressBar>
+          <div>
+            <div>Progress</div>
+            <ProgressBar
+              now={(game.currentQuestion / game.news.length) * 100}
+            ></ProgressBar>
+          </div>
         </div>
       ) : (
-        <div>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
           <img
             className={'d-block image ' + styles['Score-img']}
             src={scorePlaceholder}

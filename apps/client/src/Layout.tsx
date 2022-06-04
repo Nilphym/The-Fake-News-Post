@@ -9,7 +9,7 @@ import { CurrentGameScore } from './components/currentGameScore/CurrentGameScore
 
 export const Layout = () => {
   return (
-    <Container fluid>
+    <Container fluid style={{ padding: '2rem' }}>
       <Row>
         <Header />
       </Row>
@@ -24,10 +24,10 @@ export const Layout = () => {
         </Col>
         <Col xs={{ span: 6, order: 3 }} md={{ span: 3, order: 3 }}>
           <Row>
-            <Authors />
+            <CurrentGameScore />
           </Row>
           <Row>
-            <CurrentGameScore />
+            <Authors />
           </Row>
         </Col>
       </Row>
