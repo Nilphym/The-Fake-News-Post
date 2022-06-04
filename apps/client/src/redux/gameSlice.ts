@@ -15,7 +15,7 @@ export const gameSlice = createSlice({
   initialState,
   reducers: {
     answer: (state, action: PayloadAction<string>) => {
-      state.answers.push(action.payload)
+      state.answers.push(action.payload);
       console.log(action);
     },
   },
