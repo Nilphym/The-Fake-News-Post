@@ -23,5 +23,8 @@
         "yarn": ">=1.22.0",
         "node": ">=14.0.0"
     },
-    "packageManager": "yarn@1.22.19"
+    "packageManager": "yarn@1.22.19",
+    "resolutions": {
+        "autoprefixer": "10.4.5"
+    }
 }
