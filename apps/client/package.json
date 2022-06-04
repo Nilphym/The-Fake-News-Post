@@ -24,7 +24,7 @@
         "dev": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test --passWithNoTests",
-        "lint": "eslint \"{src,test}/**/*.ts\" --fix"
+        "lint": "eslint \"{src,test}/**/*.ts\""
     },
     "browserslist": {
         "production": [
