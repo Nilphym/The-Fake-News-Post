@@ -9,7 +9,7 @@ import styles from './CurrentGameScore.module.scss';
 
 export const CurrentGameScore = (): JSX.Element => {
   const game: GameState = useSelector((state: any) => state.game);
-  let totalTime = game.answers
+  const totalTime = game.answers
     .map((value) => value.elapsedTime)
     .reduce((previousValue, currentValue) => previousValue + currentValue, 0);
 
