@@ -6,7 +6,7 @@ import {
 } from '../services/gameService';
 
 export interface GameState {
-  news: Array<Object>;
+  news: Array<any>;
   loadingNews: boolean;
   answers: Array<AnswersType>;
   questionStartTime: number;
@@ -45,6 +45,8 @@ export const gameSlice = createSlice({
       });
 
       state.questionStartTime = new Date().getTime();
+    },
+    goToNextAnswer: (state) => {
       state.currentQuestion += 1;
     },
   },
@@ -69,6 +71,6 @@ export const gameSlice = createSlice({
   },
 });
 
-export const { answer } = gameSlice.actions;
+export const { answer, goToNextAnswer } = gameSlice.actions;
 
 export default gameSlice.reducer;

@@ -1,1 +1,1 @@
-web: yarn workspace @fake-news/api build && node apps/api/build/main
+web: node apps/api/build/main
