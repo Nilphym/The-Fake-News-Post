@@ -1,22 +1,23 @@
-import styles from './App.module.scss';
+import { Routes, Route } from 'react-router-dom';
+import { Layout } from './Layout';
+import { NewsPage } from './pages/NewsPage';
 
 export const App = () => {
-    console.log(styles);
-    return (
-        <div className={styles.App}>
-            <header className={styles['App-header']}>
-                <p>
-                    Edit <code>src/App.tsx</code> and save to reload.
-                </p>
-                <a
-                    className={styles['App-link']}
-                    href='https://reactjs.org'
-                    target='_blank'
-                    rel='noopener noreferrer'
-                >
-                    Learn React
-                </a>
-            </header>
-        </div>
-    );
+  return (
+    <Routes>
+      <Route path='/' element={<Layout />}>
+        <Route index element={<div>Home Page</div>} />
+        <Route
+          path='game'
+          element={
+            <div style={{ margin: '0 auto', width: '40rem' }}>
+              <NewsPage />
+            </div>
+          }
+        />
+        <Route path='summary' element={<div>Podsumowanie rozgrywki</div>} />
+        <Route path='ranking' element={<div>Ranking</div>} />
+      </Route>
+    </Routes>
+  );
 };

@@ -1,16 +1,20 @@
+@import '~bootstrap/scss/bootstrap';
+
 @font-face {
-    font-family: 'Poynter Regular';
-    src: url(assets/fonts/PoynterTextRegular.ttf) format('truetype');
+  font-family: 'Poynter Regular';
+  src: url(assets/fonts/PoynterTextRegular.ttf) format('truetype');
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
-    font-family: 'Poynter Regular', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  font-family: 'Poynter Regular', sans-serif;
 }
 
-code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-        monospace;
+.image {
+  filter: grayscale(1);
 }
