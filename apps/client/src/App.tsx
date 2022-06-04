@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
 import { RankPage } from './pages/RankPage';
 import { GamePage } from './pages/GamePage';
