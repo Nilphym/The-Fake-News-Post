@@ -31,14 +31,20 @@ export class NewsService {
         if (!entry) throw new NotFoundException();
 
         const ok = entry.real_answer === answer;
+
+        const isAICorrect = entry.real_answer === entry.ai_answer;
+
         let score = 0;
-        if (!ok && time < 5) score = -100; // user strzelił źle bardzo szybko
+
+        if (!ok && time < 5) score = -30; // user strzelił źle bardzo szybko
         if (!ok && time > 20) score = 10; // user strzelił źle, ale robił research
         if (!ok && time > 30) score = 20; // user strzelił źle, ale robił duży research
         if (ok && time < 10) score = 10; // user strzelił dobrze bardzo szybko
         if (ok && time > 10 && time < 20) score = 50; // user ocenił poprawnie robiąc research
-        if (ok && time > 20) score = 100; // user ocenił poprawnie robiąc duży research
-        if (ok && time > 30) score = 100; // user ocenił poprawnie robiąc duży research
+        if (ok && time > 20) score = 80; // user ocenił poprawnie robiąc duży research
+        if (ok && time > 30) score = 100; // user ocenił poprawnie robiąc szczegółowy research
+
+        if (ok && !isAICorrect) score * 1.5;
 
         const correct_answer: CorrectAnswer = {
             ...entry,
