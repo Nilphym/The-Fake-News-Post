@@ -52,6 +52,10 @@ export const gameSlice = createSlice({
     builder
       .addCase(getNews.pending, (state) => {
         state.loadingNews = true;
+        state.news = [];
+        state.answers = [];
+        state.questionStartTime = 0;
+        state.currentQuestion = 0;
       })
       .addCase(getNews.fulfilled, (state, action) => {
         state.news = action.payload;
