@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import { Layout } from './Layout';
-import { NewsPage } from './pages/NewsPage';
+import { NewsPage } from './pages/GamePage';
 
 export const App = () => {
   return (
