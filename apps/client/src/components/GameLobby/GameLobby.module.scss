@@ -1,0 +1,21 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.buttonContainer {
+  width: 10rem;
+}
+.subHeader {
+  font-size: 48px;
+}
+.playersList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.singlePlayer {
+  font-size: 32px;
+  padding: 8px;
+}
