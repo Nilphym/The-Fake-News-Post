@@ -2,8 +2,9 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { NewsEntry } from '../news';
 import { UserScore, UpdateUserScoreDto } from '.';
+import { CorrectAnswer } from 'src/news/correct-answer.class';
+import { UserScoreResponse } from './user-score-response.class';
 
 @Injectable()
 export class RankService {
@@ -30,17 +31,21 @@ export class RankService {
         });
     }
 
-    createUserScore(answers: NewsEntry[]) {
+    async createUserScore(answers: CorrectAnswer[]) {
         const entry = this.userScoreRepo.create();
 
         entry.is_public = false;
-        entry.your_answers = answers;
-        entry.score = answers.reduce(
-            (prev, answer) => prev + answer.your_score,
-            0,
-        );
+        entry.score = answers.reduce((prev, { score }) => prev + score, 0);
+        entry.total_time = answers.reduce((prev, { time }) => prev + time, 0);
 
-        return this.userScoreRepo.save(entry);
+        await this.userScoreRepo.save(entry);
+
+        const user_score: UserScoreResponse = {
+            ...entry,
+            your_answers: answers,
+        };
+
+        return user_score;
     }
 
     async updateUserScore(id: string, dto: UpdateUserScoreDto) {
@@ -48,9 +53,12 @@ export class RankService {
 
         if (!entry) throw new NotFoundException();
 
-        return this.userScoreRepo.save({
+        await this.userScoreRepo.save({
             ...entry,
-            ...dto,
+            username: dto.username,
+            is_public: true,
         });
+
+        return entry;
     }
 }

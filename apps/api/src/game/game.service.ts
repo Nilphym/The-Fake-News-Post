@@ -1,8 +1,9 @@
 import { Injectable } from '@nestjs/common';
 
-import { NewsEntry, NewsService } from '../news';
+import { NewsService } from '../news';
 import { RankService } from '../rank';
 import { GAME_QUESTIONS_AMOUNT, FinishGameDto } from '.';
+import { CorrectAnswer } from 'src/news/correct-answer.class';
 
 @Injectable()
 export class GameService {
@@ -12,13 +13,19 @@ export class GameService {
     ) {}
 
     async createGame() {
-        return {
-            news: await this.newsService.getRandomNews(GAME_QUESTIONS_AMOUNT),
-        };
+        const news = await this.newsService.getRandomNews(
+            GAME_QUESTIONS_AMOUNT,
+        );
+
+        return news.map((v) => {
+            v.real_answer = undefined;
+            v.ai_answer = undefined;
+            return v;
+        });
     }
 
     async finishGame(dto: FinishGameDto) {
-        const answers: NewsEntry[] = [];
+        const answers: CorrectAnswer[] = [];
 
         for (const { id, answer, time } of dto.answers) {
             answers.push(

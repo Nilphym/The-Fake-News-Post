@@ -1,3 +1,4 @@
+export * from './user-score-response.class';
 export * from './update-user-score.dto';
 export * from './user-score.entity';
 export * from './rank.service';
