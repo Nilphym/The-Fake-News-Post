@@ -1,6 +1,14 @@
 @font-face {
-    font-family: 'Poynter Regular';
-    src: url(assets/fonts/PoynterTextRegular.ttf) format('truetype');
+  font-family: 'Poynter Regular';
+  src: url(assets/fonts/PoynterTextRegular.ttf) format('truetype');
+}
+
+@import '~bootstrap/scss/bootstrap';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -13,4 +21,8 @@ body {
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
         monospace;
+}
+
+.image {
+    filter: grayscale(1);
 }
