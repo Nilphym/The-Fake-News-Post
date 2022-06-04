@@ -1,0 +1,28 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-top: 2px solid #222;
+  border-bottom: 2px solid #222;
+  padding: 15px 50px 0px 50px;
+}
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.borders {
+  width: 50px;
+  height: 3px;
+  border-top: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+.subHeader {
+}
+.overline {
+  text-decoration: line-through;
+}
+.date {
+  padding: 15px 15px 15px 15px;
+}

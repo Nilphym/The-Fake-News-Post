@@ -1,0 +1,12 @@
+.flex {
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 3px;
+}
+.singleItem {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
