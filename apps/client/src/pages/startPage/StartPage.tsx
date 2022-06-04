@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './StartPage.module.scss';
 
 export const StartPage = () => {
   const [validated, setValidated] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = (event: {
     currentTarget: any;
@@ -19,11 +21,17 @@ export const StartPage = () => {
     setValidated(true);
   };
 
+  const goToHostGame = () => {
+    navigate('/host');
+  };
+
   return (
     <div>
       <Row>
         <Col xs={'12'} sm={'6'} className={styles['StartPage-column']}>
-          <button className={styles['StartPage-button']}>Host game</button>
+          <button onClick={goToHostGame} className={styles['StartPage-button']}>
+            Host game
+          </button>
         </Col>
         <Col xs={'12'} sm={'6'} className={styles['StartPage-column']}>
           <Form
