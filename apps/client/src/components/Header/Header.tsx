@@ -2,7 +2,7 @@ import React from 'react';
 import { Logo } from './Logo';
 import { Paragraph } from './Paragraph';
 import styles from './Header.module.scss';
-import { CategoryList } from './CategoryList';
+// import { CategoryList } from './CategoryList';
 
 export const Header = () => {
   return (
