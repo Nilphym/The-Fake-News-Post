@@ -1,0 +1,12 @@
+{
+    "name": "@fake-news/common",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "lint": "eslint \"{src,test}/**/*.ts\"",
+        "format": "prettier --write \"src/**/*\""
+    },
+    "dependencies": {
+        "typeorm": "^0.3.6"
+    }
+}
