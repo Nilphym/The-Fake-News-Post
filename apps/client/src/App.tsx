@@ -7,14 +7,7 @@ export const App = () => {
     <Routes>
       <Route path='/' element={<Layout />}>
         <Route index element={<div>Home Page</div>} />
-        <Route
-          path='game'
-          element={
-            <div style={{ margin: '0 auto', width: '40rem' }}>
-              <NewsPage />
-            </div>
-          }
-        />
+        <Route path='game' element={<NewsPage />} />
         <Route path='summary' element={<div>Podsumowanie rozgrywki</div>} />
         <Route path='ranking' element={<div>Ranking</div>} />
       </Route>
