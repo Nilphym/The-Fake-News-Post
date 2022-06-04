@@ -10,9 +10,7 @@ export const App = () => {
         <Route
           path='game'
           element={
-            <div style={{ margin: '0 auto', width: '40rem' }}>
               <NewsPage />
-            </div>
           }
         />
         <Route path='summary' element={<div>Podsumowanie rozgrywki</div>} />

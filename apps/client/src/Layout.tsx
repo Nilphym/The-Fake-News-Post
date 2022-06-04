@@ -13,13 +13,13 @@ export const Layout = () => {
         <Header />
       </Row>
       <Row sm={{cols: 2}} md={{cols: 4}}>
-        <Col sm={{span: 3, order: 2}} md={{span: 3, order: 1}}>
+        <Col sm={{span: 6, order: 2}} md={{span: 3, order: 1}}>
           <HowToPlay />
         </Col>
-        <Col sm={{span: 6, order: 1}} md={{span: 6, order: 2}}>
-          <div>asd</div>
+        <Col sm={{span: 12, order: 1}} md={{span: 6, order: 2}}>
+          <Outlet />
         </Col>
-        <Col sm={{span: 3, order: 3}} md={{span: 3, order: 3}}>
+        <Col sm={{span: 6, order: 3}} md={{span: 3, order: 3}}>
           <Authors />
         </Col>
       </Row>
