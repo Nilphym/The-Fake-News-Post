@@ -20,7 +20,7 @@ export const MainNews = ({
   content?: string;
   image?: string;
   chooseAnswer?: ({ userAnswer }: ChooseAnswerArgs) => void;
-  style?: Object;
+  style?: any;
   skeleton?: boolean;
 }) => {
   return skeleton ? (

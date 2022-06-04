@@ -6,7 +6,7 @@ import {
 } from '../services/gameService';
 
 export interface GameState {
-  news: Array<Object>;
+  news: Array<any>;
   loadingNews: boolean;
   answers: Array<AnswersType>;
   questionStartTime: number;

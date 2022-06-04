@@ -15,7 +15,7 @@ export const apiService = {
     return fetchedData;
   },
 
-  async put({ url, data }: { url: string; data: Object }) {
+  async put({ url, data }: { url: string; data: any }) {
     const { data: fetchedData } = await axiosInstance.put(url, data);
     return fetchedData;
   },
