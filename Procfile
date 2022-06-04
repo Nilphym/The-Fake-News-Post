@@ -1,1 +1,1 @@
-web: yarn dev --scope=@fake-news/api
+web: yarn workspace @fake-news/api build && node apps/api/build/main
