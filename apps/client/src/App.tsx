@@ -12,8 +12,7 @@ export const App = () => {
         <Route index element={<StartPage />} />
         <Route path='game' element={<GamePage />} />
         <Route path='host' element={<GameLobby />} />
-        <Route path='summary' element={<div>Podsumowanie rozgrywki</div>} />
-        <Route path='ranking' element={<RankPage />} />
+        <Route path='summary' element={<RankPage />} />
       </Route>
     </Routes>
   );

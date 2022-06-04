@@ -26,6 +26,8 @@
     "react-scripts": "5.0.1",
     "react-transition-group": "^4.4.2",
     "sass": "^1.52.2",
+    "socket.io": "^4.5.1",
+    "socket.io-react-hook": "^1.0.15",
     "typescript": "^4.7.3",
     "web-vitals": "^2.1.4"
   },
