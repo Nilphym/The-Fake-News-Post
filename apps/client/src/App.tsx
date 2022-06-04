@@ -1,11 +1,9 @@
-import { Header } from './components/Header/Header';
-import { Logo } from './components/Header/Logo';
-import { Paragraph } from './components/Header/Paragraph';
+import { NewsPage } from './pages/NewsPage';
 
 export const App = () => {
-    return (
-        <div className='App'>
-            <Header />
-        </div>
-    );
+  return (
+    <div style={{ margin: '0 auto', width: '40rem' }}>
+      <NewsPage />
+    </div>
+  );
 };
