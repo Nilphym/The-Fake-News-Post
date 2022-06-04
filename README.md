@@ -1,4 +1,7 @@
-# Turborepo starter
+# The Fake News Post
+
+API Deploy on [Heroku.com](https://the-fake-news-post.herokuapp.com/).
+Client Deploy on [Netlify.com](https://the-fake-news-post.netlify.app/).
 
 ### Apps and Packages
 

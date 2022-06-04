@@ -1,0 +1,1 @@
+web: yarn dev --scope=@fake-news/api
