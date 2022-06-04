@@ -1,10 +1,5 @@
 import { Type } from 'class-transformer';
-import {
-    IsBooleanString,
-    IsEnum,
-    IsNumber,
-    IsString,
-} from 'class-validator';
+import { IsBooleanString, IsEnum, IsNumber, IsString } from 'class-validator';
 
 export enum NodeEnv {
     DEVELOPMENT = 'development',
