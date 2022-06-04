@@ -1,41 +1,41 @@
 import { ProgressBar } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { GameState } from '../../redux/gameSlice';
+import { gameService } from '../../services/gameService';
+import scorePlaceholder from '../../assets/images/scorePlaceholder.jpg';
+
+import styles from './CurrentGameScore.module.scss';
 
 export const CurrentGameScore = (): JSX.Element => {
-  const game = true; // todo from store
-  let totalTime = 0; // todo from store
-  const timePerQuestion = 60;
+  const game: GameState = useSelector((state: any) => state.game);
+  let totalTime = game.answers
+    .map((value) => value.elapsedTime)
+    .reduce((previousValue, currentValue) => previousValue + currentValue, 0);
 
-  const questions = [1, 2, 3, 4, 5, 6]; // todo from store
+  const timePerQuestion = 60 * 5;
 
   const [counter, setCounter] = useState(0);
-  const [questionIndex, setQuestionIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCounter((prevCounter) => prevCounter + 1);
+      setCounter(() =>
+        gameService.calculateElapsedTime({ startTime: game.questionStartTime }),
+      );
     }, 1000);
     return () => {
       clearInterval(interval);
       setCounter(0);
     };
-  }, [questionIndex]);
-
-  useEffect(() => {
-    if (counter >= timePerQuestion) {
-      setQuestionIndex((prevIndex) => prevIndex + 1);
-      setCounter(0);
-    }
-  }, [counter]);
+  }, [game.currentQuestion]);
 
   return (
-    <>
-      {game ? (
+    <div className={'mt-5'}>
+      {game.news.length > 0 ? (
         <div>
-          <h2>CURRENT GAME</h2>
+          <h3 className={'text-center'}>CURRENT GAME</h3>
           <div>
-            <h3>Total time</h3>
-            <p>Time: {totalTime + counter}s</p>
+            <p>Total time: {totalTime + counter}s</p>
           </div>
           <div>Time left: {timePerQuestion - counter}s</div>
           <ProgressBar
@@ -43,19 +43,18 @@ export const CurrentGameScore = (): JSX.Element => {
           ></ProgressBar>
           <div>Progress</div>
           <ProgressBar
-            now={((questionIndex + 1) / questions.length) * 100}
+            now={((game.currentQuestion + 1) / game.news.length) * 100}
           ></ProgressBar>
-          <div>
-            <button
-              onClick={() => setQuestionIndex((prevIndex) => prevIndex + 1)}
-            >
-              Next
-            </button>
-          </div>
         </div>
       ) : (
-        <div>placeholder</div>
+        <div>
+          <img
+            className={'d-block image ' + styles['Score-img']}
+            src={scorePlaceholder}
+            alt={'score'}
+          />
+        </div>
       )}
-    </>
+    </div>
   );
 };
