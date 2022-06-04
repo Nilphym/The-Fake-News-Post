@@ -9,15 +9,15 @@ export const Logo = () => {
   month = month.toString();
   day = day.toString();
 
-  if (month.length == 1) {
+  if (month.length === 1) {
     month = `0${month}`;
   }
 
-  if (day.length == 1) {
+  if (day.length === 1) {
     day = `0${day}`;
   }
 
-  const date: string = `${today.getFullYear()}-${month}-${day}`;
+  const date = `${today.getFullYear()}-${month}-${day}`;
 
   return (
     <div className={styles.mainContainer}>
