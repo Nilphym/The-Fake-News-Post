@@ -1,5 +1,5 @@
 import { Logo } from './components/Header/Logo';
-import { Paragraph } from './components/Paragraph';
+import { Paragraph } from './components/Header/Paragraph';
 
 export const App = () => {
     return (
