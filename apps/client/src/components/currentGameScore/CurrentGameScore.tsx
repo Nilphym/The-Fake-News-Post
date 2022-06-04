@@ -2,20 +2,31 @@ import { ProgressBar } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 
 export const CurrentGameScore = (): JSX.Element => {
-  const game = true;
-  const time = 0;
-  const timePerQuestion = 60000;
-  const questions = [];
-  const questionIndex = 0;
+  const game = true; // todo from store
+  let totalTime = 0; // todo from store
+  const timePerQuestion = 60;
+
+  const questions = [1, 2, 3, 4, 5, 6]; // todo from store
 
   const [counter, setCounter] = useState(0);
+  const [questionIndex, setQuestionIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCounter((prevCounter) => prevCounter + 1);
     }, 1000);
-    return () => clearInterval(interval);
-  }, []);
+    return () => {
+      clearInterval(interval);
+      setCounter(0);
+    };
+  }, [questionIndex]);
+
+  useEffect(() => {
+    if (counter >= timePerQuestion) {
+      setQuestionIndex((prevIndex) => prevIndex + 1);
+      setCounter(0);
+    }
+  }, [counter]);
 
   return (
     <>
@@ -24,18 +35,22 @@ export const CurrentGameScore = (): JSX.Element => {
           <h2>CURRENT GAME</h2>
           <div>
             <h3>Total time</h3>
-            <p>Time: {time}</p>
+            <p>Time: {totalTime + counter}s</p>
           </div>
-          <div>Time left</div>
+          <div>Time left: {timePerQuestion - counter}s</div>
           <ProgressBar
-            now={timePerQuestion - counter / timePerQuestion}
+            now={((timePerQuestion - counter) / timePerQuestion) * 100}
           ></ProgressBar>
           <div>Progress</div>
           <ProgressBar
-            now={(questionIndex + 1) / questions.length}
+            now={((questionIndex + 1) / questions.length) * 100}
           ></ProgressBar>
           <div>
-            <button>Next</button>
+            <button
+              onClick={() => setQuestionIndex((prevIndex) => prevIndex + 1)}
+            >
+              Next
+            </button>
           </div>
         </div>
       ) : (
