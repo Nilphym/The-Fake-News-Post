@@ -52,7 +52,9 @@ export const webSocketService = {
           ...question,
           title: question.title.replaceAll('\\"', '"'),
           content: question.content.replaceAll('\\"', '"'),
-          image: 'http://loremflickr.com/1234/2345/people?56789',
+          image: `http://loremflickr.com/1234/2345/people?${Math.floor(
+            Math.random() * 10000,
+          )}`,
         });
       },
     );
