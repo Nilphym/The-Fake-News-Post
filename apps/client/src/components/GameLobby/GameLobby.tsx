@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import QRCode from 'react-qr-code';
 import { savePin } from '../../redux/webSocketSlice';
 import { webSocketService } from '../../services/webSocketService';
 import styles from './GameLobby.module.scss';
@@ -48,6 +49,7 @@ export const GameLobby = () => {
           />
         )}
       </h2>
+      {pin ? <QRCode value={`${window.location.origin}?code=${pin}`} /> : null}
       <button
         disabled={!players.length}
         onClick={startGame}
