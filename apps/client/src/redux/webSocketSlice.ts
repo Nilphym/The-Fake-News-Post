@@ -11,7 +11,80 @@ const initialState: SocketState = {
   connected: false,
   pin: undefined,
   user: undefined,
-  ranking: undefined,
+  ranking: [
+    {
+      name: 'Konrad',
+      score: 42,
+    },
+    {
+      name: 'Konrad',
+      score: 42,
+    },
+    {
+      name: 'Konrad',
+      score: 42,
+    },
+    {
+      name: 'Konrad',
+      score: 42,
+    },
+    {
+      name: 'Konrad',
+      score: 42,
+    },
+    {
+      name: 'Konrad',
+      score: 42,
+    },
+    {
+      name: 'Konrad',
+      score: 42,
+    },
+    {
+      name: 'Konrad',
+      score: 42,
+    },
+    {
+      name: 'Konrad',
+      score: 42,
+    },
+    {
+      name: 'Konrad',
+      score: 42,
+    },
+    {
+      name: 'Konrad',
+      score: 42,
+    },
+    {
+      name: 'Konrad',
+      score: 42,
+    },
+    {
+      name: 'Konrad',
+      score: 42,
+    },
+    {
+      name: 'Konrad',
+      score: 42,
+    },
+    {
+      name: 'Konrad',
+      score: 42,
+    },
+    {
+      name: 'Konrad',
+      score: 42,
+    },
+    {
+      name: 'Konrad',
+      score: 42,
+    },
+    {
+      name: 'Konrad',
+      score: 2,
+    },
+  ],
 };
 
 export const webSocketSlice = createSlice({

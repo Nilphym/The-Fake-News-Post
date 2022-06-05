@@ -18,7 +18,7 @@ export const RankPage = () => {
           Congratulations!
         </NewsContent>
       </div>
-      {rank.map(({ name }: { name: any }, index: any) => {
+      {rank.slice(0, 10).map(({ name }: { name: any }, index: any) => {
         return (
           <div key={index} className={styles.crosswordContainer}>
             <div className={styles.crosswordComponent}>
@@ -33,7 +33,7 @@ export const RankPage = () => {
 
       <div className={styles.scoreContainer}>
         <div>
-          {rank.map(({ score }: { score: any }, index: any) => {
+          {rank.slice(0, 10).map(({ score }: { score: any }, index: any) => {
             return (
               <div key={index}>
                 {index + 1}. Score: {score}
