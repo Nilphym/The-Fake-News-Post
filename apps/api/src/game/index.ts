@@ -1,4 +1,5 @@
-export * from './finish-game.dto';
+export * from './game.entity';
+export * from './game-question.entity';
+export * from './game-answer.entity';
 export * from './game.service';
-export * from './game.controller';
 export * from './game.module';
