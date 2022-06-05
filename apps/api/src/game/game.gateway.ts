@@ -10,7 +10,12 @@ import { Server, Socket } from 'socket.io';
 import { NewsType } from 'src/news';
 import { GameService } from './game.service';
 
-@WebSocketGateway()
+@WebSocketGateway({
+    cors: {
+        origin: [process.env.CLIENT_URL, 'http://localhost:3000'],
+        credentials: true,
+    },
+})
 export class GameGateway {
     constructor(private gameService: GameService) {}
 
