@@ -18,7 +18,7 @@ export class GameService {
     ) {}
 
     async createGame() {
-        const questions = await this.newsService.getRandomNews(1);
+        const questions = await this.newsService.getRandomNews(5);
 
         const game = this.games.create();
 
