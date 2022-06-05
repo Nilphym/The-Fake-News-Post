@@ -1,1 +1,2 @@
-export const API_URL = 'lovalhost:4000';
+export const API_URL = 'https://the-fake-news-post.herokuapp.com/';
+export const WEB_SOCKET_API_URL = 'ws://localhost:4000';

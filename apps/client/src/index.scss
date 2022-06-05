@@ -13,8 +13,22 @@
 
 body {
   font-family: 'Poynter Regular', sans-serif;
+  background-color: #f0ebdf;
+  background-image: url('./assets/images/background.png');
 }
 
 .image {
   filter: grayscale(1);
+}
+
+.progress-bar {
+  background-color: black;
+  color: white;
+}
+
+.progress {
+  border-radius: 0;
+}
+
+.btn {
 }
