@@ -1,16 +1,16 @@
-import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
-import { Authors } from './components/authors/Authors';
-import { Header } from './components/Header/Header';
-import { HowToPlay } from './components/HowToPlay/HowToPlay';
-import styles from './Layout.module.scss';
+
+import { Authors } from './components/Authors';
+import { Header } from './components/Header';
+import { HowToPlay } from './components/HowToPlay';
 import { CurrentGameScore } from './components/currentGameScore/CurrentGameScore';
+import styles from './Layout.module.scss';
 
 export const Layout = () => {
   return (
-    <Container fluid style={{ padding: '2rem' }}>
-      <Row>
+    <Container style={{ padding: '2rem 2rem 0' }} fluid>
+      <Row style={{ padding: '0 0 2rem' }}>
         <Header />
       </Row>
       <Row>

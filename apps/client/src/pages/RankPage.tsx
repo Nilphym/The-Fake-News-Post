@@ -1,6 +1,5 @@
-import React from 'react';
-import { NewsContent } from '../components/News/NewsContent';
-import { NewsHeader } from '../components/News/NewsHeader';
+import { NewsContent } from '../components/News/NewsContent/NewsContent';
+import { NewsHeader } from '../components/News/NewsHeader/NewsHeader';
 import { setSecondsToMinutes } from '../utils/setSecondsToMinutes';
 import { turnNicknameToCrossWord } from '../utils/turnNicknameToCrossword';
 import styles from './RankPage.module.scss';

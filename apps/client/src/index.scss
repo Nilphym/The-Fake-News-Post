@@ -11,6 +11,13 @@
   box-sizing: border-box;
 }
 
+ol,
+ul,
+dl {
+  padding: 0;
+  margin: 0;
+}
+
 body {
   font-family: 'Poynter Regular', sans-serif;
   background-color: #f0ebdf;
@@ -28,7 +35,4 @@ body {
 
 .progress {
   border-radius: 0;
-}
-
-.btn {
 }

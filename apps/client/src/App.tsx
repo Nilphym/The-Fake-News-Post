@@ -10,8 +10,8 @@ export const App = () => {
     <Routes>
       <Route path='/' element={<Layout />}>
         <Route index element={<StartPage />} />
-        <Route path='game' element={<GamePage />} />
         <Route path='host' element={<GameLobby />} />
+        <Route path='game' element={<GamePage />} />
         <Route path='summary' element={<RankPage />} />
       </Route>
     </Routes>

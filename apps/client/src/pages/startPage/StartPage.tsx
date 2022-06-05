@@ -26,7 +26,7 @@ export const StartPage = () => {
   };
 
   return (
-    <div>
+    <div style={{ paddingTop: '2rem' }}>
       <Row>
         <Col xs={'12'} sm={'6'} className={styles['StartPage-column']}>
           <button onClick={goToHostGame} className={styles['StartPage-button']}>

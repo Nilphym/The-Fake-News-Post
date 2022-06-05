@@ -1,10 +1,10 @@
-import { ProgressBar } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { ProgressBar } from 'react-bootstrap';
+
 import { GameState } from '../../redux/gameSlice';
 import { gameService } from '../../services/gameService';
 import scorePlaceholder from '../../assets/images/scorePlaceholder.png';
-
 import styles from './CurrentGameScore.module.scss';
 
 export const CurrentGameScore = (): JSX.Element => {
@@ -20,6 +20,7 @@ export const CurrentGameScore = (): JSX.Element => {
         gameService.calculateElapsedTime({ startTime: game.questionStartTime }),
       );
     }, 1000);
+
     return () => {
       clearInterval(interval);
       setCounter(0);

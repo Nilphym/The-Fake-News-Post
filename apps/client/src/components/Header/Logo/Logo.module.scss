@@ -6,21 +6,26 @@
   border-top: 2px solid #222;
   border-bottom: 2px solid #222;
   padding: 15px 50px 0px 50px;
+  cursor: pointer;
 }
+
 .flex {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .borders {
   width: 50px;
   height: 6px;
   border-top: 1px solid #807d74;
   border-bottom: 1px solid #807d74;
 }
+
 .overline {
   text-decoration: line-through;
 }
+
 .date {
   font-size: 1.3rem;
   padding: 15px 15px 15px 15px;

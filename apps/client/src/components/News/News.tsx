@@ -1,15 +1,13 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
-import React from 'react';
+import 'react-loading-skeleton/dist/skeleton.css';
+
 import { NewsContent } from './NewsContent';
 import { NewsHeader } from './NewsHeader';
 import { NewsImage } from './NewsImage';
-import styles from './MainNews.module.scss';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
-
 import { ChooseAnswerArgs } from '../../pages/GamePage';
+import styles from './News.module.scss';
 
-export const MainNews = ({
+export const News = ({
   title,
   content,
   image,

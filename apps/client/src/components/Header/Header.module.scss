@@ -1,7 +1,9 @@
-.flex {
-  margin-top: 25px;
-  margin-bottom: 25px;
+.container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.paragraph {
+  font-size: 1.5rem;
 }

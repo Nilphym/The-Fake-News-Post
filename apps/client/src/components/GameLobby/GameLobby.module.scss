@@ -3,19 +3,34 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 2rem;
+  gap: 1.5rem;
 }
-.buttonContainer {
-  width: 10rem;
+
+.playersHeading {
+  font-size: 3.5rem;
 }
-.subHeader {
-  font-size: 48px;
-}
+
 .playersList {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
+
 .singlePlayer {
-  font-size: 32px;
-  padding: 8px;
+  font-size: 2rem;
+  padding: 0 1rem;
+  list-style: none;
+}
+
+.joinButton {
+  padding: 0.7rem 5rem;
+  border: 2px solid black;
+  font-size: 2rem;
+  background-color: transparent;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
 }

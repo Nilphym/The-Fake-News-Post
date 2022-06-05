@@ -1,0 +1,1 @@
+export { NewsContent } from './NewsContent';

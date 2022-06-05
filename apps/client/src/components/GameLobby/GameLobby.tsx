@@ -1,33 +1,42 @@
-import React from 'react';
-import { MainNews } from '../News/MainNews';
-import { NewsContent } from '../News/NewsContent';
-import { NewsHeader } from '../News/NewsHeader';
+import { useEffect } from 'react';
+import Skeleton from 'react-loading-skeleton';
+import { webSocketService } from '../../services/webSocketService';
 import styles from './GameLobby.module.scss';
 
 export const GameLobby = () => {
   const players: Array<string> = ['Dawid', 'Marek', 'Pawel', 'Darek', 'Gosia'];
   const addPlayerToArray = (name: string) => players.push(name);
+
+  useEffect(() => {
+    webSocketService.connect();
+  }, []);
+
+  const startGame = () => {
+    console.log('start game');
+  };
+
   return (
     <div className={styles.mainContainer}>
-      <h2>Join at: XXX-XXX</h2>
-      <div
-        className={styles.buttonContainer}
-        onClick={() => console.log('kliknieted')}
-      >
-        <NewsHeader>Start</NewsHeader>
-      </div>
-      <div className={styles.subHeader}>
-        <NewsContent>Players:</NewsContent>
-      </div>
-      <div className={styles.playersList}>
-        {players.map((e, index) => {
-          return (
-            <span key={index} className={styles.singlePlayer}>
-              {e}
-            </span>
-          );
-        })}
-      </div>
+      <h2 className={styles.joinText}>
+        Join at:{' '}
+        <Skeleton
+          inline={true}
+          width='8rem'
+          baseColor='#f0ebdf'
+          highlightColor='#000'
+        />
+      </h2>
+      <button onClick={startGame} className={styles.joinButton}>
+        Start
+      </button>
+      <p className={styles.playersHeading}>Players:</p>
+      <ul className={styles.playersList}>
+        {players.map((playerName) => (
+          <li key={playerName} className={styles.singlePlayer}>
+            {playerName}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

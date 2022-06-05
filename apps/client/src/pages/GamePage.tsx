@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Transition } from 'react-transition-group';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import { MainNews } from '../components/News/MainNews';
+import { News } from '../components/News';
 import { answer, getNews, goToNextAnswer } from '../redux/gameSlice';
 import { PossibleAnswer } from '../services/gameService';
 
@@ -45,7 +45,7 @@ export const GamePage = () => {
     currentQuestion < news.length ? (
       <Transition in={inProp} timeout={duration} onExited={nextAnswer}>
         {(state) => (
-          <MainNews
+          <News
             style={{
               ...defaultStyle,
               ...(transitionStyles as any)[state],
@@ -61,6 +61,6 @@ export const GamePage = () => {
       <Navigate to='/summary' />
     )
   ) : (
-    <MainNews skeleton={true} />
+    <News skeleton={true} />
   );
 };
