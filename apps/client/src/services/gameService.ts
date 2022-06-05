@@ -1,12 +1,12 @@
 import { apiService } from './apiService';
 
 export type PossibleAnswer = 'fake' | 'real';
-export type NewsType = Array<{
+export type NewsType = {
   id: string;
   title: string;
   content: string;
   image: string;
-}>;
+};
 export type AnswersType = {
   id: string;
   answer: PossibleAnswer;
@@ -14,7 +14,7 @@ export type AnswersType = {
 };
 
 export const gameService = {
-  getNews: async (): Promise<NewsType> => {
+  getNews: async (): Promise<Array<NewsType>> => {
     const news = await apiService.post({ url: '/game' });
     return news.map(
       (singleNews: { id: string; title: string; content: string }) => ({

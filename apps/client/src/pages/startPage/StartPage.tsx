@@ -1,24 +1,21 @@
-import React, { useState } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
+import { webSocketService } from '../../services/webSocketService';
 import styles from './StartPage.module.scss';
+import { saveUser } from '../../redux/webSocketSlice';
+import { useDispatch } from 'react-redux';
 
 export const StartPage = () => {
-  const [validated, setValidated] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { register, handleSubmit } = useForm<{ pin: string; name: string }>();
 
-  const handleSubmit = (event: {
-    currentTarget: any;
-    preventDefault: () => void;
-    stopPropagation: () => void;
-  }) => {
-    const form = event.currentTarget;
-    if (form.checkValidity() === false) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-    setValidated(true);
+  const onSubmit = ({ pin, name }: { pin: string; name: string }) => {
+    webSocketService.joinGame({ pin, user: name });
+    dispatch(saveUser(name));
+    navigate('/game');
   };
 
   const goToHostGame = () => {
@@ -35,16 +32,22 @@ export const StartPage = () => {
         </Col>
         <Col xs={'12'} sm={'6'} className={styles['StartPage-column']}>
           <Form
-            noValidate
-            validated={validated}
+            onSubmit={handleSubmit(onSubmit)}
             className={styles['StartPage-form']}
-            onSubmit={handleSubmit}
           >
-            <Form.Group>
+            <Form.Group
+              style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
+            >
               <Form.Control
+                {...register('pin', { required: true })}
                 type='text'
-                required
                 placeholder='Code'
+                className={styles['StartPage-formInput']}
+              />
+              <Form.Control
+                {...register('name', { required: true })}
+                type='text'
+                placeholder='Name'
                 className={styles['StartPage-formInput']}
               />
               <Form.Control.Feedback type='invalid'>

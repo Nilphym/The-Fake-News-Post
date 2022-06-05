@@ -22,7 +22,7 @@ export const Authors = () => {
       </h4>
       <Carousel fade>
         {authors.map(({ src, name }) => (
-          <Carousel.Item interval={5000}>
+          <Carousel.Item key={name} interval={5000}>
             <div className={styles['Authors-img-container']}>
               <img
                 className={'d-block image ' + styles['Authors-img']}
