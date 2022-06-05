@@ -3,7 +3,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { ConfigModule, ConfigService, NodeEnv } from '../config';
 import { NewsEntry } from '../news';
-import { UserScore } from '../rank';
+import { Game, GameQuestion, GameAnswer } from '../game';
+import { User } from '../user';
 
 @Module({
     imports: [
@@ -14,7 +15,7 @@ import { UserScore } from '../rank';
                 ...configService.databaseCredentials(),
                 // logging: configService.NODE_ENV === NodeEnv.DEVELOPMENT,
                 synchronize: configService.NODE_ENV === NodeEnv.DEVELOPMENT,
-                entities: [NewsEntry, UserScore],
+                entities: [NewsEntry, Game, GameQuestion, GameAnswer, User],
             }),
         }),
     ],
