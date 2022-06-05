@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Transition } from 'react-transition-group';
-import { useDispatch, useSelector } from 'react-redux';
-import { Navigate, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { News } from '../components/News';
-import { answer, goToNextAnswer } from '../redux/gameSlice';
 import { NewsType, PossibleAnswer } from '../services/gameService';
 import { webSocketService } from '../services/webSocketService';
 
@@ -25,7 +24,6 @@ export type ChooseAnswerArgs = { userAnswer: PossibleAnswer };
 
 export const GamePage = () => {
   const { type } = useParams();
-  const dispatch = useDispatch();
   const [currentQuestion, setCurrentQuestion] = useState<NewsType | null>(null);
   const [inProp, setInProp] = useState(false);
   const { pin, user } = useSelector((state) => (state as any).webSocket);
@@ -34,6 +32,7 @@ export const GamePage = () => {
     webSocketService.checkQuestion((question: NewsType) => {
       setCurrentQuestion(question);
       setInProp(true);
+      console.log('first');
     });
     if (type === 'host') {
       webSocketService.startQuestion(pin);
@@ -45,26 +44,42 @@ export const GamePage = () => {
     webSocketService.sendAnswer(pin, user, userAnswer);
   };
 
-  const nextAnswer = () => {
-    dispatch(goToNextAnswer());
-    setInProp(true);
+  const setNextAnswer = () => {
+    webSocketService.stopQuestion(pin);
+    webSocketService.startQuestion(pin);
   };
 
   return currentQuestion && inProp ? (
-    <Transition in={inProp} timeout={duration}>
-      {(state) => (
-        <News
+    <div style={{ display: 'flex', flexDirection: 'column' }}>
+      {type && (
+        <button
+          onClick={setNextAnswer}
           style={{
-            ...defaultStyle,
-            ...(transitionStyles as any)[state],
+            backgroundColor: 'transparent',
+            padding: '1rem 0',
+            margin: '0 2rem',
+            fontSize: '1.8rem',
           }}
-          title={currentQuestion.title}
-          content={currentQuestion.content}
-          image={currentQuestion.image}
-          chooseAnswer={chooseAnswer}
-        />
+        >
+          Next question
+        </button>
       )}
-    </Transition>
+      <Transition in={inProp} timeout={duration}>
+        {(state) => (
+          <News
+            type={type as any}
+            style={{
+              ...defaultStyle,
+              ...(transitionStyles as any)[state],
+            }}
+            title={currentQuestion.title}
+            content={currentQuestion.content}
+            image={currentQuestion.image}
+            chooseAnswer={chooseAnswer}
+          />
+        )}
+      </Transition>
+    </div>
   ) : (
     <News skeleton={true} />
   );

@@ -14,6 +14,7 @@ export const News = ({
   chooseAnswer,
   style,
   skeleton,
+  type,
 }: {
   title?: string;
   content?: string;
@@ -21,6 +22,7 @@ export const News = ({
   chooseAnswer?: ({ userAnswer }: ChooseAnswerArgs) => void;
   style?: any;
   skeleton?: boolean;
+  type?: 'host';
 }) => {
   return skeleton ? (
     <div style={style} className={styles.container}>
@@ -36,20 +38,22 @@ export const News = ({
     </div>
   ) : (
     <div style={style} className={styles.container}>
-      <div className={styles.answerContainer}>
-        <button
-          onClick={() => chooseAnswer!({ userAnswer: 'fake' })}
-          className={`${styles.answerButton} ${styles['answerButton--wrong']}`}
-        >
-          Fake
-        </button>
-        <button
-          onClick={() => chooseAnswer!({ userAnswer: 'real' })}
-          className={`${styles.answerButton} ${styles['answerButton--right']}`}
-        >
-          Real
-        </button>
-      </div>
+      {type ? null : (
+        <div className={styles.answerContainer}>
+          <button
+            onClick={() => chooseAnswer!({ userAnswer: 'fake' })}
+            className={`${styles.answerButton} ${styles['answerButton--wrong']}`}
+          >
+            Fake
+          </button>
+          <button
+            onClick={() => chooseAnswer!({ userAnswer: 'real' })}
+            className={`${styles.answerButton} ${styles['answerButton--right']}`}
+          >
+            Real
+          </button>
+        </div>
+      )}
       <NewsHeader>{title!}</NewsHeader>
       <NewsContent>{content!.slice(0, 1000)} [...]</NewsContent>
       <NewsImage image={image!} />

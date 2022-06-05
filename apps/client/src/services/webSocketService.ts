@@ -63,8 +63,8 @@ export const webSocketService = {
       authenticated: false,
     });
   },
-  stopQuestion() {
-    this.socket.emit('game:question_stop');
+  stopQuestion(pin: string) {
+    this.socket.emit('game:question_stop', pin);
   },
   correctAnswer(callback: any) {
     this.socket.emit('game:correct_answer', (response: any) =>
