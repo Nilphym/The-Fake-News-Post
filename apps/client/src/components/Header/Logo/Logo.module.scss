@@ -27,7 +27,20 @@
 }
 
 .date {
+  text-align: center;
   font-size: 1.3rem;
   padding: 15px 15px 15px 15px;
   color: #807d74;
+
+  @media screen and (max-width: 510px) {
+    font-size: 1rem;
+  }
+}
+
+.subHeader {
+  text-align: center;
+
+  @media screen and (max-width: 510px) {
+    font-size: 1.3rem;
+  }
 }

@@ -55,7 +55,9 @@ export const News = ({
         </div>
       )}
       <NewsHeader>{title!}</NewsHeader>
-      <NewsContent>{content!.slice(0, 1000)} [...]</NewsContent>
+      <NewsContent>
+        {content!.length > 1000 ? `${content!.slice(0, 1000)} [...]` : content}
+      </NewsContent>
       <NewsImage image={image!} />
     </div>
   );

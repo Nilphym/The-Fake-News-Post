@@ -68,10 +68,8 @@ export const webSocketService = {
   stopQuestion(pin: string) {
     this.socket.emit('game:question_stop', pin);
   },
-  correctAnswer(callback: any) {
-    this.socket.emit('game:correct_answer', (response: any) =>
-      callback(response),
-    );
+  checkCorrectAnswer(callback: any) {
+    this.socket.on('game:correct_answer', callback);
   },
   rank(callback: any) {
     this.socket.on('game:rank', callback);

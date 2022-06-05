@@ -6,8 +6,8 @@ export const HowToPlay = () => {
       <h2 className={styles.header}>How to play?</h2>
       <div className={styles.instructionDescription}>
         The game is pretty simple! You have to find if the article is fake or
-        real, but you've got to be quick because you've got only 3 minutes for
-        all your guesses. Ejnoy!
+        real, but you've got to be quick because you're competing with other
+        players. Enjoy!
       </div>
     </div>
   );

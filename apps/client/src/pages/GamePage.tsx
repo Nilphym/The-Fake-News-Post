@@ -26,6 +26,8 @@ export type ChooseAnswerArgs = { userAnswer: PossibleAnswer };
 export const GamePage = () => {
   const { type } = useParams();
   const [currentQuestion, setCurrentQuestion] = useState<NewsType | null>(null);
+  const [currentAnswer, setCurrentAnswer] = useState<string | null>(null);
+  const [toggleAnswer, setToggleAnswer] = useState(false);
   const [inProp, setInProp] = useState(false);
   const { pin, user } = useSelector((state) => (state as any).webSocket);
   const navigate = useNavigate();
@@ -35,9 +37,14 @@ export const GamePage = () => {
     webSocketService.checkQuestion((question: NewsType) => {
       setCurrentQuestion(question);
       setInProp(true);
+      setToggleAnswer(false);
+    });
+    webSocketService.checkCorrectAnswer((answer: string) => {
+      setCurrentAnswer(answer);
+      setInProp(false);
+      setToggleAnswer(true);
     });
     webSocketService.rank((res: any) => {
-      console.log(res);
       dispatch(saveRanking(res));
       navigate('/summary');
     });
@@ -51,16 +58,21 @@ export const GamePage = () => {
     webSocketService.sendAnswer(pin, user, userAnswer);
   };
 
-  const setNextAnswer = () => {
+  const showAnswer = () => {
     webSocketService.stopQuestion(pin);
+  };
+
+  const setNextAnswer = () => {
     webSocketService.startQuestion(pin);
   };
 
   return currentQuestion && inProp ? (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <div
+      style={{ position: 'relative', display: 'flex', flexDirection: 'column' }}
+    >
       {type && (
         <button
-          onClick={setNextAnswer}
+          onClick={showAnswer}
           style={{
             backgroundColor: 'transparent',
             padding: '1rem 0',
@@ -68,7 +80,7 @@ export const GamePage = () => {
             fontSize: '1.8rem',
           }}
         >
-          Next question
+          Show answer
         </button>
       )}
       <Transition in={inProp} timeout={duration}>
@@ -88,6 +100,26 @@ export const GamePage = () => {
       </Transition>
     </div>
   ) : (
-    <News skeleton={true} />
+    <div
+      style={{ position: 'relative', display: 'flex', flexDirection: 'column' }}
+    >
+      {type && (
+        <button
+          onClick={setNextAnswer}
+          style={{
+            backgroundColor: 'transparent',
+            padding: '1rem 0',
+            margin: '0 2rem',
+            fontSize: '1.8rem',
+          }}
+        >
+          Next news
+        </button>
+      )}
+      {toggleAnswer ? (
+        <div style={{ padding: '1rem 2rem' }}>The news was {currentAnswer}</div>
+      ) : null}
+      <News skeleton={true} />
+    </div>
   );
 };
