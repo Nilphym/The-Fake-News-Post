@@ -32,7 +32,6 @@ export const GamePage = () => {
     webSocketService.checkQuestion((question: NewsType) => {
       setCurrentQuestion(question);
       setInProp(true);
-      console.log('first');
     });
     if (type === 'host') {
       webSocketService.startQuestion(pin);

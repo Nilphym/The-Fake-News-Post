@@ -1,6 +1,6 @@
 import { apiService } from './apiService';
 
-export type PossibleAnswer = 'fake' | 'real';
+export type PossibleAnswer = 'FAKE' | 'REAL';
 export type NewsType = {
   id: string;
   title: string;

@@ -72,7 +72,7 @@ export const webSocketService = {
     );
   },
   rank(callback: any) {
-    this.socket.emit('game:rank', (response: any) => callback(response));
+    this.socket.on('game:rank', callback);
   },
   stopGame() {
     this.socket.emit('game:stop');

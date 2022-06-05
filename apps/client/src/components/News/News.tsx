@@ -41,13 +41,13 @@ export const News = ({
       {type ? null : (
         <div className={styles.answerContainer}>
           <button
-            onClick={() => chooseAnswer!({ userAnswer: 'fake' })}
+            onClick={() => chooseAnswer!({ userAnswer: 'FAKE' })}
             className={`${styles.answerButton} ${styles['answerButton--wrong']}`}
           >
             Fake
           </button>
           <button
-            onClick={() => chooseAnswer!({ userAnswer: 'real' })}
+            onClick={() => chooseAnswer!({ userAnswer: 'REAL' })}
             className={`${styles.answerButton} ${styles['answerButton--right']}`}
           >
             Real

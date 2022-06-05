@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
 import { RankPage } from './pages/RankPage';
@@ -11,12 +11,13 @@ import { webSocketService } from './services/webSocketService';
 
 export const App = () => {
   const dispatch = useDispatch();
+  const { connected } = useSelector((state) => (state as any).webSocket);
 
   useEffect(() => {
     webSocketService.connect(() => dispatch(connect()));
   }, []);
 
-  return (
+  return connected ? (
     <Routes>
       <Route path='/' element={<Layout />}>
         <Route index element={<StartPage />} />
@@ -26,5 +27,5 @@ export const App = () => {
         <Route path='summary' element={<RankPage />} />
       </Route>
     </Routes>
-  );
+  ) : null;
 };
