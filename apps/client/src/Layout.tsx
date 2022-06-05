@@ -1,7 +1,7 @@
 import { Col, Container, Row } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
 
-import { Authors } from './components/Authors';
+import { Authors } from './components/authors';
 import { Header } from './components/Header';
 import { HowToPlay } from './components/HowToPlay';
 import { CurrentGameScore } from './components/currentGameScore/CurrentGameScore';
