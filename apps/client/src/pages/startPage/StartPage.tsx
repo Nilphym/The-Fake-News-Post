@@ -1,5 +1,5 @@
 import { Col, Form, Row } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 
 import { webSocketService } from '../../services/webSocketService';
@@ -8,6 +8,7 @@ import { savePin, saveUser } from '../../redux/webSocketSlice';
 import { useDispatch } from 'react-redux';
 
 export const StartPage = () => {
+  const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm<{ pin: string; name: string }>();
@@ -43,6 +44,7 @@ export const StartPage = () => {
                 {...register('pin', { required: true })}
                 type='text'
                 placeholder='Code'
+                value={searchParams.get('code')?.toString()}
                 className={styles['StartPage-formInput']}
               />
               <Form.Control
