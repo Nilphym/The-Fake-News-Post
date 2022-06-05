@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Transition } from 'react-transition-group';
-import { useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from 'react-router-dom';
 import { News } from '../components/News';
 import { NewsType, PossibleAnswer } from '../services/gameService';
 import { webSocketService } from '../services/webSocketService';
+import { saveRanking } from '../redux/webSocketSlice';
 
 const duration = 300;
 
@@ -27,11 +28,18 @@ export const GamePage = () => {
   const [currentQuestion, setCurrentQuestion] = useState<NewsType | null>(null);
   const [inProp, setInProp] = useState(false);
   const { pin, user } = useSelector((state) => (state as any).webSocket);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     webSocketService.checkQuestion((question: NewsType) => {
       setCurrentQuestion(question);
       setInProp(true);
+    });
+    webSocketService.rank((res: any) => {
+      console.log(res);
+      dispatch(saveRanking(res));
+      navigate('/summary');
     });
     if (type === 'host') {
       webSocketService.startQuestion(pin);

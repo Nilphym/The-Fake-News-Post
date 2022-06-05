@@ -21,6 +21,8 @@ export const webSocketService = {
   },
   connect(callback: any) {
     this.socket = io(WEB_SOCKET_API_URL);
+    this.socket.onAny(console.log);
+    this.socket.prependAny(console.log);
     return this.socket.on('connect', callback);
   },
   createGame(callback: any) {

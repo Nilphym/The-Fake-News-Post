@@ -1,16 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { NewsContent } from '../components/News/NewsContent/NewsContent';
 import { NewsHeader } from '../components/News/NewsHeader/NewsHeader';
-import { webSocketService } from '../services/webSocketService';
 import { turnNicknameToCrossWord } from '../utils/turnNicknameToCrossword';
 import styles from './RankPage.module.scss';
 
 export const RankPage = () => {
-  const [rank, setRank] = useState<{ name: string; score: number }[]>([]);
-
-  useEffect(() => {
-    webSocketService.rank(setRank);
-  }, []);
+  const { ranking: rank }: any = useSelector(
+    (state) => (state as any).webSocket,
+  );
 
   return (
     <div className={styles.mainContainer}>
@@ -21,7 +18,7 @@ export const RankPage = () => {
           Congratulations!
         </NewsContent>
       </div>
-      {rank.map(({ name }, index) => {
+      {rank.map(({ name }: { name: any }, index: any) => {
         return (
           <div key={index} className={styles.crosswordContainer}>
             <div className={styles.crosswordComponent}>
@@ -36,7 +33,7 @@ export const RankPage = () => {
 
       <div className={styles.scoreContainer}>
         <div>
-          {rank.map(({ score }, index) => {
+          {rank.map(({ score }: { score: any }, index: any) => {
             return (
               <div key={index}>
                 {index + 1}. Score: {score}

@@ -4,12 +4,14 @@ export interface SocketState {
   connected: boolean;
   pin?: string;
   user?: string;
+  ranking?: any;
 }
 
 const initialState: SocketState = {
   connected: false,
   pin: undefined,
   user: undefined,
+  ranking: undefined,
 };
 
 export const webSocketSlice = createSlice({
@@ -25,9 +27,13 @@ export const webSocketSlice = createSlice({
     saveUser: (state: any, action) => {
       state.user = action.payload;
     },
+    saveRanking: (state: any, action) => {
+      state.ranking = action.payload;
+    },
   },
 });
 
-export const { connect, savePin, saveUser } = webSocketSlice.actions;
+export const { connect, savePin, saveUser, saveRanking } =
+  webSocketSlice.actions;
 
 export default webSocketSlice.reducer;

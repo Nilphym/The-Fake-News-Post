@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 
 import { webSocketService } from '../../services/webSocketService';
 import styles from './StartPage.module.scss';
-import { saveUser } from '../../redux/webSocketSlice';
+import { savePin, saveUser } from '../../redux/webSocketSlice';
 import { useDispatch } from 'react-redux';
 
 export const StartPage = () => {
@@ -15,6 +15,7 @@ export const StartPage = () => {
   const onSubmit = ({ pin, name }: { pin: string; name: string }) => {
     webSocketService.joinGame({ pin, user: name });
     dispatch(saveUser(name));
+    dispatch(savePin(pin));
     navigate('/game');
   };
 
@@ -45,8 +46,9 @@ export const StartPage = () => {
                 className={styles['StartPage-formInput']}
               />
               <Form.Control
-                {...register('name', { required: true })}
+                {...register('name', { required: true, maxLength: 10 })}
                 type='text'
+                maxLength={10}
                 placeholder='Name'
                 className={styles['StartPage-formInput']}
               />
