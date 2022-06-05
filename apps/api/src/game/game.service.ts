@@ -145,6 +145,8 @@ export class GameService {
 
                 if (!rank[user]) rank[user] = 0;
 
+                if (a.answer !== q.question.real_answer) return;
+
                 rank[user] += Math.min(1000, 1200 / delta_s);
             });
         });

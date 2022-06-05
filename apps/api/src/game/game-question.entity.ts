@@ -19,7 +19,7 @@ export class GameQuestion {
     @ManyToOne(() => Game, (g) => g.questions, { onDelete: 'CASCADE' })
     game: Game;
 
-    @OneToOne(() => NewsEntry, { eager: true })
+    @OneToOne(() => NewsEntry, { eager: true, onDelete: 'CASCADE' })
     @JoinColumn()
     question: NewsEntry;
 
